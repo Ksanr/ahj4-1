@@ -16,6 +16,7 @@
     "mini-css-extract-plugin": "^2.10.2",
     "puppeteer": "^24.42.0",
     "style-loader": "^4.0.0",
+    "wait-on": "^9.0.5",
     "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.3"
@@ -24,6 +25,7 @@
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "test": "jest",
+    "test:e2e": "jest --testMatch='**/e2e/**/*.test.js' --forceExit",
     "coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "predeploy": "yarn build",
