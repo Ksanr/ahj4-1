@@ -1,9 +1,11 @@
-name: CI
+name: Deploy to GitHub Pages
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,11 +14,8 @@ jobs:
           node-version: 20          # было 18, стало 20
       - run: corepack enable
       - run: yarn install
-      - run: yarn test
       - run: yarn build
-      - run: |
-          yarn start &
-          npx wait-on http://localhost:8080
-          yarn test:e2e
-        env:
-          CI: true
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
