@@ -10,6 +10,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: corepack enable
       - run: yarn install
       - run: yarn test
-
+      - run: yarn build
+      - run: |
+          yarn start &
+          npx wait-on http://localhost:8080
+          yarn test:e2e
+        env:
+          CI: true
