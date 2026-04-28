@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Validator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cards-row" id="cardsRow">
+            <img src="./img/visa.png" alt="Visa" data-card="visa" class="card-img">
+            <img src="./img/mastercard.png" alt="MasterCard" data-card="mastercard" class="card-img">
+            <img src="./img/amex.png" alt="American Express" data-card="amex" class="card-img">
+            <img src="./img/discover.png" alt="Discover" data-card="discover" class="card-img">
+            <img src="./img/jcb.png" alt="JCB" data-card="jcb" class="card-img">
+            <img src="./img/diners.png" alt="Diners Club" data-card="diners" class="card-img">
+        </div>
+        <div class="input-row">
+            <input type="text" id="cardNumber" placeholder="Введите номер карты" class="card-input">
+            <button id="checkBtn" class="check-btn">Проверить</button>
+        </div>
+        <div id="errorMsg" class="error-message"></div>
+    </div>
+</body>
+</html>
