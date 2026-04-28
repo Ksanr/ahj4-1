@@ -55,6 +55,18 @@ describe('Credit Card Validator E2E', () => {
     expect(errorText).toBe('');
   });
 
+  test('Valid Mir card – should activate Mir icon', async () => {
+    await page.$eval('#cardNumber', el => el.value = '');
+    await page.type('#cardNumber', '2200000000000004');
+    await page.click('#checkBtn');
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const isMirActive = await page.$eval('[data-card="mir"]', img => img.classList.contains('active'));
+    expect(isMirActive).toBe(true);
+    const errorText = await page.$eval('#errorMsg', el => el.textContent);
+    expect(errorText).toBe('');
+  });
+
   test('Invalid card – shows error and no icon highlighted', async () => {
     await page.$eval('#cardNumber', el => el.value = '');
     await page.type('#cardNumber', '1234567890123456');

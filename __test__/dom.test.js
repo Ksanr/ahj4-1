@@ -20,6 +20,7 @@ beforeEach(() => {
       <img data-card="discover" class="card-img" src="./img/discover.png">
       <img data-card="jcb" class="card-img" src="./img/jcb.png">
       <img data-card="diners" class="card-img" src="./img/diners.png">
+      <img data-card="mir" class="card-img" src="./img/mir.png">
     </div>
     <div class="input-row">
       <input id="cardNumber" placeholder="Введите номер карты">
@@ -82,11 +83,14 @@ describe('DOM interaction with jest.each', () => {
   test.each([
     ['4111111111111111', 'visa', ''],                                   // валидная Visa
     ['5111111111111118', 'mastercard', ''],                             // валидная MasterCard
+    ['2221000000000009', 'mastercard', ''],                             // валидная MasterCard
     ['378282246310005', 'amex', ''],                                    // валидная Amex
     ['6011111111111117', 'discover', ''],                               // валидная Discover
     ['3530111333300000', 'jcb', ''],                                    // валидная JCB
     ['30569309025904', 'diners', ''],                                   // валидная Diners
+    ['2200000000000004', 'mir', ''],                                    // валидная Мир
     ['1234567890123456', null, 'Неизвестная платёжная система'],        // неизвестная система
+    ['2200000000000013', null, 'Невалидный номер карты (ошибка контрольной суммы)'], // невалидная Мир / MasterCard
     ['4111111111111112', null, 'Невалидный номер карты (ошибка контрольной суммы)'], // невалидная Visa
   ])('для номера %s ожидаем платежную систему %s и сообщение "%s"', (cardNumber, expectedSystem, expectedError) => {
     input.value = cardNumber;
