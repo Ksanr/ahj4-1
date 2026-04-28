@@ -24,8 +24,8 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "test": "jest",
-    "test:e2e": "jest --testMatch='**/e2e/**/*.test.js' --forceExit",
+    "test": "jest --testPathIgnorePatterns e2e",
+    "test:e2e": "jest e2e --forceExit",
     "coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "predeploy": "yarn build",
